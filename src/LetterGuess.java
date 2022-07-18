@@ -2,6 +2,13 @@ import java.util.Scanner;
 import java.util.Random;;
 
 public class LetterGuess {
+  public static final String TEXT_RESET = "\u001B[0m";
+  public static final String TEXT_RED = "\u001B[31m";
+  public static final String TEXT_BLUE = "\u001B[34m";
+  public static final String TEXT_GREEN = "\u001B[32m";
+  public static final String TEXT_CYAN = "\u001B[36m";
+  public static final String TEXT_YELLOW = "\u001B[33m";
+
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
@@ -12,19 +19,38 @@ public class LetterGuess {
         "V", "W", "X", "Y", "Z" };
     int index = rand.nextInt(letters.length);
 
-    System.out.println("Welcome to the letter guess game!");
-    System.out.println("You have " + guessesLeft + " chances to win.");
-    System.out.println("Please choose one letter from the alphabet:");
+    System.out.println(TEXT_BLUE + "Welcome to the letter guess game!" + TEXT_RESET);
+    System.out.println(TEXT_CYAN + "You have " + guessesLeft + " chances to win." + TEXT_RESET);
+    System.out.println(TEXT_GREEN + "Please choose one letter from the alphabet:" + TEXT_RESET);
     userChoice = sc.nextLine().toUpperCase();
 
     if (userChoice.equals(letters[index])) {
-      System.out.println("Congratualations! You have won!");
-    } else if (!userChoice.equals(letters[index])) {
-      System.out.println("Sorry, that is not the correct letter.");
+      System.out.println(TEXT_GREEN + "Congratualations! You have won!" + TEXT_RESET);
+    }
+
+    if (!userChoice.equals(letters[index])) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
       guessesLeft -= 1;
-      System.out.println("You have " + guessesLeft + " remaining. Please choose again:");
-    } else if (guessesLeft == 0) {
-      System.out.println("Sorry, the correct letter was " + letters[index] + ". You lose!");
+      System.out.println("You have " + guessesLeft + " remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 2) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft -= 1;
+      System.out.println("You have " + guessesLeft + " remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 1) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft -= 1;
+      System.out.println("You have " + guessesLeft + " remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (guessesLeft == 0) {
+      System.out.println(TEXT_RED + "Sorry, the correct letter was " + letters[index] + ". You lose!" + TEXT_RESET);
     }
 
   }
