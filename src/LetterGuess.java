@@ -13,7 +13,7 @@ public class LetterGuess {
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
     String userChoice = "";
-    int guessesLeft = 3;
+    int guessesLeft = 9;
     String[] letters = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
         "T", "U",
         "V", "W", "X", "Y", "Z" };
@@ -25,27 +25,79 @@ public class LetterGuess {
     userChoice = sc.nextLine().toUpperCase();
 
     if (userChoice.equals(letters[index])) {
-      System.out.println(TEXT_GREEN + "Congratualations! You have won!" + TEXT_RESET);
+      System.out.println(TEXT_GREEN + "Congratualations! You have won!" +
+          TEXT_RESET);
     }
 
     if (!userChoice.equals(letters[index])) {
       System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
-      guessesLeft -= 1;
-      System.out.println("You have " + guessesLeft + " remaining. Please choose again:" + TEXT_RESET);
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 8) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 7) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 6) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 5) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 4) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
+      userChoice = sc.nextLine().toUpperCase();
+    }
+
+    if (!userChoice.equals(letters[index]) && guessesLeft == 3) {
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
       userChoice = sc.nextLine().toUpperCase();
     }
 
     if (!userChoice.equals(letters[index]) && guessesLeft == 2) {
       System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
-      guessesLeft -= 1;
-      System.out.println("You have " + guessesLeft + " remaining. Please choose again:" + TEXT_RESET);
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println("You have " + guessesLeft + " chances remaining. Please choose again:" + TEXT_RESET);
       userChoice = sc.nextLine().toUpperCase();
     }
 
     if (!userChoice.equals(letters[index]) && guessesLeft == 1) {
-      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter.");
-      guessesLeft -= 1;
-      System.out.println("You have " + guessesLeft + " remaining. Please choose again:" + TEXT_RESET);
+      System.out.println(TEXT_YELLOW + "Sorry, that is not the correct letter." + TEXT_RESET);
+      guessesLeft = guessesLeft - 1;
+      userChoice = "";
+      System.out.println(TEXT_RED + "This is your last chance! Please choose again:" + TEXT_RESET);
       userChoice = sc.nextLine().toUpperCase();
     }
 
@@ -54,4 +106,5 @@ public class LetterGuess {
     }
 
   }
+
 }
