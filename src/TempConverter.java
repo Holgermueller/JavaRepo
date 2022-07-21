@@ -1,6 +1,15 @@
 import java.util.Scanner;
 
 public class TempConverter {
+    static void convertToFahrenheit() {
+        System.out.println("Convert to Fahrenheit");
+
+    }
+
+    static void convertToCelcius() {
+        System.out.println("Convert to Celcius");
+
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -16,10 +25,10 @@ public class TempConverter {
         conversionChoice = sc.nextLine().toUpperCase();
 
         if (conversionChoice.equals("F")) {
-            System.out.println("Convert to Fahrenheit");
+            convertToFahrenheit();
             System.out.println(userInput + ", " + conversionChoice);
         } else if (conversionChoice.equals("C")) {
-            System.out.println("Convert to Celcius");
+            convertToCelcius();
             System.out.println(userInput + ", " + conversionChoice);
         } else {
             System.out.println("That is not a valid choice.");
