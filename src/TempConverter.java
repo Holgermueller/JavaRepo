@@ -1,20 +1,10 @@
 import java.util.Scanner;
 
 public class TempConverter {
-    static void convertToFahrenheit() {
-        System.out.println("Convert to Fahrenheit");
-
-    }
-
-    static void convertToCelcius() {
-        System.out.println("Convert to Celcius");
-
-    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String userInput = "";
-        String convertedTemp = "";
         String conversionChoice = "";
 
         System.out.println("Enter temp to be converted:");
@@ -23,13 +13,14 @@ public class TempConverter {
 
         System.out.println("Do you want to convert to F)ahrenheit or C)elcius?");
         conversionChoice = sc.nextLine().toUpperCase();
+        double inputConvertedToDouble = Double.parseDouble(userInput);
 
         if (conversionChoice.equals("F")) {
-            convertToFahrenheit();
-            System.out.println(userInput + ", " + conversionChoice);
+            double tempToReturn = (inputConvertedToDouble * 1.8) + 32;
+            System.out.println("It is " + tempToReturn + " decgrees C.");
         } else if (conversionChoice.equals("C")) {
-            convertToCelcius();
-            System.out.println(userInput + ", " + conversionChoice);
+            double tempToReturn = ((5 * (inputConvertedToDouble - 32.0)) / 9.0);
+            System.out.println("It is " + tempToReturn + " decgrees C.");
         } else {
             System.out.println("That is not a valid choice.");
         }
